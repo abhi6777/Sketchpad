@@ -27,7 +27,7 @@ let hoverDiv = document.querySelectorAll(".hover");
 
 hoverDiv.forEach(hoverDiv => {
      hoverDiv.addEventListener("mouseover", () => {
-          hoverDiv.style.backgroundColor = "red";
+          hoverDiv.style.backgroundColor = `${generateColor()}`;
       });
 });
 
@@ -39,7 +39,7 @@ const newGrid = document.querySelector("#newGrid");
 newGrid.addEventListener("click", () => {
      let value = prompt("New Grid Size");
      if(value > 100) {
-          alert("pls enter under 100 grids");
+          alert("Please enter a value under 100 grids.");
           return;
      };
      container.innerHTML = "";
@@ -48,3 +48,11 @@ newGrid.addEventListener("click", () => {
      container.style.width = `${containerWidth}px`;
      createGrid();
 });
+
+// Additional
+// generating random RGB
+
+const generateColor = () => {
+     const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+     return "#" + randomColor;
+   };
