@@ -28,7 +28,7 @@ let hoverDiv = document.querySelectorAll(".hover");
 hoverDiv.forEach(hoverDiv => {
      hoverDiv.addEventListener("mouseover", () => {
           hoverDiv.style.backgroundColor = `${generateColor()}`;
-      });
+     });
 });
 
 
@@ -37,6 +37,15 @@ hoverDiv.forEach(hoverDiv => {
 const newGrid = document.querySelector("#newGrid");
 
 newGrid.addEventListener("click", () => {
+
+     // Removing the event listener
+     hoverDiv.forEach(hoverDiv => {
+          hoverDiv.removeEventListener("mouseover", () => {
+               hoverDiv.style.backgroundColor = `${generateColor()}`;
+          });
+     });
+
+     // Assigning new value for new grid size 
      let value = prompt("New Grid Size");
      if(value > 100) {
           alert("Please enter a value under 100 grids.");
@@ -47,6 +56,15 @@ newGrid.addEventListener("click", () => {
      let containerWidth = (grid * boxSize);
      container.style.width = `${containerWidth}px`;
      createGrid();
+
+     // reassigning for coloring the divs
+
+     hoverDiv = document.querySelectorAll(".hover");
+     hoverDiv.forEach(hoverDiv => {
+     hoverDiv.addEventListener("mouseover", () => {
+          hoverDiv.style.backgroundColor = `${generateColor()}`;
+     });
+});
 });
 
 // Additional
